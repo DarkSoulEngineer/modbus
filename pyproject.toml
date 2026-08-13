@@ -1,32 +1,23 @@
 [build-system]
-requires = ["setuptools>=77"]
+requires = ["setuptools>=68.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "modbus-cli"
-version = "1.0.0"
-description = "Modbus client for TCP, UDP, RTU, ASCII, and TLS with read, write, scan, and watch commands"
+name = "modbus"
+version = "1.1.0"
+description = "MODBUS for dummies. TCP/UDP/RTU/ASCII/TLS + rich terminal UI."
 readme = "README.md"
 requires-python = ">=3.10"
-license = "MIT"
+license = { text = "MIT" }
 authors = [{ name = "DarkSoulEngineer" }]
-keywords = [
-    "modbus",
-    "plc",
-    "scada",
-    "industrial",
-    "automation",
-    "cli",
-    "rtu",
-    "tcp",
-    "tls",
-    "serial",
-]
+keywords = ["modbus", "cli", "industrial", "iot", "scada", "plc", "rtu", "automation", "rich"]
 classifiers = [
-    "Development Status :: 5 - Production/Stable",
+    "Development Status :: 4 - Beta",
     "Environment :: Console",
     "Intended Audience :: Developers",
     "Intended Audience :: Manufacturing",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.10",
@@ -34,21 +25,29 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Topic :: Scientific/Engineering",
-    "Topic :: System :: Networking",
+    "Topic :: System :: Hardware",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "pymodbus>=3.5",
+    "rich>=13.0",
 ]
 
-dependencies = [
-    "pymodbus>=3.5,<4",
-]
+[project.optional-dependencies]
+# Enable the full-screen watch TUI dashboard (requires a venv / pip install -e '.[tui]').
+tui = ["textual>=0.50"]
 
 [project.urls]
-Homepage = "https://github.com/DarkSoulEngineer/modbus"
+Homepage = "https://github.com/19bk/modbus-cli"
 Repository = "https://github.com/DarkSoulEngineer/modbus"
-Documentation = "https://github.com/DarkSoulEngineer/modbus#readme"
-Issues = "https://github.com/DarkSoulEngineer/modbus/issues"
 
 [project.scripts]
-modbus = "modbus:main"
+modbus = "modbus.cli:main"
 
-[tool.setuptools]
-py-modules = ["modbus"]
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["modbus*"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

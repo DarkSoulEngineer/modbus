@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""Launcher for the modbus package.
+
+Keeps the historical ``./modbus`` invocation working with the new
+``src/`` layout.  No install required -- the script inserts ``src/`` onto
+``sys.path`` and delegates to ``modbus.cli:main``.
+
+For a persistent install: ``pip install -e .`` exposes the ``modbus``
+console script and ``python -m modbus``.
+"""
+
+import os
+import sys
+
+if __name__ == "__main__":
+    here = os.path.dirname(os.path.abspath(__file__))
+    src_dir = os.path.join(here, "src")
+    if src_dir not in sys.path:
+        sys.path.insert(0, src_dir)
+    from modbus.cli import main
+
+    sys.exit(main())

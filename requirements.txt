@@ -1,0 +1,4 @@
+# Modbus CLI dependencies
+# pymodbus 3.5+ required: the `device_id` keyword, FramerType API and
+# ModbusTlsClient(sslctx=...) signature used by this tool rely on it.
+pymodbus>=3.5,<4

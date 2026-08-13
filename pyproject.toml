@@ -1,0 +1,54 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "modbus-cli"
+version = "1.0.0"
+description = "Modbus client for TCP, UDP, RTU, ASCII, and TLS with read, write, scan, and watch commands"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "DarkSoulEngineer" }]
+keywords = [
+    "modbus",
+    "plc",
+    "scada",
+    "industrial",
+    "automation",
+    "cli",
+    "rtu",
+    "tcp",
+    "tls",
+    "serial",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Manufacturing",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering",
+    "Topic :: System :: Networking",
+]
+
+dependencies = [
+    "pymodbus>=3.5,<4",
+]
+
+[project.urls]
+Homepage = "https://github.com/DarkSoulEngineer/modbus"
+Repository = "https://github.com/DarkSoulEngineer/modbus"
+Documentation = "https://github.com/DarkSoulEngineer/modbus#readme"
+Issues = "https://github.com/DarkSoulEngineer/modbus/issues"
+
+[project.scripts]
+modbus = "modbus:main"
+
+[tool.setuptools]
+py-modules = ["modbus"]

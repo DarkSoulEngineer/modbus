@@ -36,7 +36,7 @@ UDP, RTU, ASCII, or TLS. Features include range scanning, continuous watching
 with change detection, register filling, state snapshots (save/restore), an
 embedded test server with drifting sensor values, and an interactive REPL shell.
 
-All output uses **rich** for beautiful tables, panels, progress spinners, and
+All output uses **rich** for tables, panels, progress spinners, and
 value-bar visualizations. Machine-readable JSON is available via `--json` for
 scripting and pipelines. All diagnostics go to stderr so stdout stays clean.
 
@@ -45,13 +45,13 @@ scripting and pipelines. All diagnostics go to stderr so stdout stays clean.
 - **Five transports**: TCP, UDP, RTU, ASCII (serial), and TLS with optional
   client certificates and `--no-verify` mode.
 - **Nine commands**: `read`, `write`, `fill`, `save`, `restore`, `scan`,
-  `watch`, `simulate`, `tui` -- covering holding/input registers, coils, and
+  `watch`, `simulate`, `tui`, covering holding/input registers, coils, and
   discrete inputs.
 - **Datatype conversion** for `u16`, `i16`, `u32`, `i32`, `u64`, `i64`, `f32`,
   `f64`, and `str`, with configurable byte order, word order, and a `--scale`
   factor for engineering units.
 - **Standard Modbus address notation**: `40001-49999` (holding), `30001-39999`
-  (input), `10001-19999` (discrete), `1-9999` (coil) -- auto-detected. Raw
+  (input), `10001-19999` (discrete), `1-9999` (coil), auto-detected. Raw
   0-based offsets also work.
 - **Rich terminal UI**: colored tables, panels, value bars, spinners, and
   live-updating watch dashboard.
@@ -74,7 +74,7 @@ scripting and pipelines. All diagnostics go to stderr so stdout stays clean.
 - Python 3.10+
 - [pymodbus](https://pymodbus.readthedocs.io/) 3.5+
 - [rich](https://rich.readthedocs.io/) 13+
-- [textual](https://textual.textualize.io/) — required only for the TUI (`modbus tui`), installed via the `[tui]` extra
+- [textual](https://textual.textualize.io/): required only for the TUI (`modbus tui`), installed via the `[tui]` extra
 
 ## Installation
 
@@ -579,11 +579,11 @@ pip install -e '.[tui]'            # installs with TUI extra
 
 The package is organized under `src/modbus/`:
 
-- `core.py` -- datatype engine, client factory, connection & validation
-- `cli.py` -- argparse CLI + rich output wiring
-- `simulator.py` -- embedded test server with drifting values
-- `tui.py` -- interactive console shell (REPL)
-- `theme/` -- colorize / rendering helpers (palette, banner, widgets)
+- `core.py`: datatype engine, client factory, connection & validation
+- `cli.py`: argparse CLI + rich output wiring
+- `simulator.py`: embedded test server with drifting values
+- `tui.py`: interactive console shell (REPL)
+- `theme/`: colorize / rendering helpers (palette, banner, widgets)
 
 Run the test suite (pytest, tests to be added):
 

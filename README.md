@@ -1,4 +1,6 @@
-# Modbus
+# modbus
+
+**A command-line Modbus client for PLCs, VFDs, energy meters, and RTUs, with rich terminal output.**
 
 ```
 ███╗   ███╗   ██████╗  ██████╗  ██████╗  ██╗   ██╗  ███████╗
@@ -9,12 +11,24 @@
 ╚═╝     ╚═╝   ╚═════╝  ╚═════╝   ╚═════╝   ╚═════╝   ╚══════╝
 ```
 
-**MODBUS for dummies.** TCP/UDP/RTU/ASCII/TLS + rich terminal UI.
-
 [![License](https://img.shields.io/github/license/DarkSoulEngineer/modbus)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![pymodbus 3.5+](https://img.shields.io/badge/pymodbus-3.5+-green.svg)](https://pymodbus.readthedocs.io/)
 [![rich 13+](https://img.shields.io/badge/rich-13+-orange.svg)](https://rich.readthedocs.io/)
+
+## Table of Contents
+
+- [Description](#description)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [JSON Output](#json-output)
+- [Exit Codes](#exit-codes)
+- [Protocol Limits](#protocol-limits)
+- [Development](#development)
+- [License](#license)
+
+## Description
 
 A command-line client for Modbus devices such as PLCs, VFDs, energy meters,
 and RTUs. It reads and writes registers, coils, and discrete inputs over TCP,
@@ -26,7 +40,7 @@ All output uses **rich** for beautiful tables, panels, progress spinners, and
 value-bar visualizations. Machine-readable JSON is available via `--json` for
 scripting and pipelines. All diagnostics go to stderr so stdout stays clean.
 
-## Features
+### Features
 
 - **Five transports**: TCP, UDP, RTU, ASCII (serial), and TLS with optional
   client certificates and `--no-verify` mode.
@@ -55,9 +69,14 @@ scripting and pipelines. All diagnostics go to stderr so stdout stays clean.
   FC5 (1 coil), FC6 (1 register), FC15 (1968 coils), FC16 (123 registers).
 - **Deterministic exit codes** (0-5) and connection retries for unattended scripts.
 
-## Installation
+## Requirements
 
-Requires Python 3.10+ and pymodbus 3.5+.
+- Python 3.10+
+- [pymodbus](https://pymodbus.readthedocs.io/) 3.5+
+- [rich](https://rich.readthedocs.io/) 13+
+- [textual](https://textual.textualize.io/) — required only for the TUI (`modbus tui`), installed via the `[tui]` extra
+
+## Installation
 
 ```bash
 # Install from GitHub (provides `modbus` command)
@@ -79,7 +98,9 @@ After `pip install -e .`, invoke the tool with `modbus`. The examples below
 use `modbus`; substitute `python -m modbus` or `./modbus` when running from
 a checkout.
 
-## Quick Start
+## Usage
+
+### Quick Start
 
 ```bash
 # Read 10 holding registers (u16) from a PLC
@@ -580,7 +601,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines and
 
 ## License
 
-MIT License. Free to use, modify, and distribute, including in commercial
-projects. See [LICENSE](LICENSE) for the full text.
+This project is licensed under the [MIT License](LICENSE).
 
 Copyright (c) 2026 DarkSoulEngineer
